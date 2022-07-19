@@ -1,0 +1,34 @@
+name: bunjs
+version: 0.1.4
+summary: Bun
+description: |
+  Bun
+
+base: core22
+grade: stable
+confinement: strict
+
+parts:
+  bunjs:
+    plugin: dump
+    build-packages:
+      - unzip
+      - curl
+      - tree
+    source: .
+    override-build: |
+      curl https://bun.sh/install > install.sh
+      chmod +x install.sh
+      ./install.sh
+      pwd
+      tree .
+    organize:
+      /root/.bun: _bun
+
+apps:
+  bunjs:
+    command: _bun/bin/bun
+    plugs:
+      - network
+      - network-bind
+      - home
