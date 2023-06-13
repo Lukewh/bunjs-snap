@@ -1,5 +1,5 @@
 name: bunjs
-version: bun-v0.6.8
+version: $version
 summary: Bun
 description: |
   Bun
